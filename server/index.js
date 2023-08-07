@@ -25,12 +25,49 @@ app.post('/signup', async (req, res) => {
 })
 
 // get all users
-app.get('/profile', async (req, res) => {
+app.get('/profiles', async (req, res) => {
   try {
     const allUsers = await pool.query(
-      'SELECT first_name, last_name, email FROM users'
+      'SELECT id, first_name, last_name, email FROM users'
     )
     res.json(allUsers.rows)
+  } catch (err) {
+    console.error(err.message)
+  }
+})
+
+app.get('/profiles/:id', async (req, res) => {
+  try {
+    const { id } = req.params
+    const profile = await pool.query(
+      'SELECT id, first_name, last_name, email FROM users WHERE id = $1',
+      [id]
+    )
+    res.json(profile.rows[0])
+  } catch (err) {
+    console.error(err.message)
+  }
+})
+
+app.put('/profiles/:id', async (req, res) => {
+  try {
+    const { id } = req.params
+    const { first_name, last_name, email } = req.body
+    const updatedProfile = await pool.query(
+      'UPDATE users SET first_name = $1, last_name = $2, email = $3 WHERE id = $4',
+      [first_name, last_name, email, id]
+    )
+    res.json('profile Updated')
+  } catch (err) {
+    console.error(err.message)
+  }
+})
+
+app.delete('/profiles/:id', async (req, res) => {
+  try {
+    const { id } = req.params
+    const deleteRow = await pool.query('DELETE FROM users WHERE id = $1', [id])
+    res.json('profile deleted')
   } catch (err) {
     console.error(err.message)
   }
