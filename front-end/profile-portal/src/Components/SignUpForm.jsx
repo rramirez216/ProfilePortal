@@ -1,9 +1,14 @@
 function SignUpForm() {
   return (
     <form>
-      <input type='text' name='' id='' />
-      <input type='text' name='' id='' />
-      <input type='' name='' id='' />
+      <label htmlFor='first_name'>First Name:</label>
+      <input type='text' id='first-name' />
+      <label htmlFor='last_name'>Last Name:</label>
+      <input type='text' id='last-name' />
+      <label htmlFor='email'>Email:</label>
+      <input type='email' id='email' />
+      <input type='password' id='password' />
+      <button>Submit</button>
     </form>
   )
 }
