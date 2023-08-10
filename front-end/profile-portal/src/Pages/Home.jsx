@@ -1,11 +1,11 @@
 import React from 'react'
-import Form from '../Components/Form'
+import SignUpForm from '../Components/SignUpForm'
 
 function Home() {
   return (
     <div>
-      <h2>Log In</h2>
-      <Form />
+      <h2>Create User</h2>
+      <SignUpForm />
     </div>
   )
 }
