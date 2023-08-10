@@ -1,16 +1,26 @@
+import styled from 'styled-components'
+
 function SignUpForm() {
   return (
     <form>
-      <label htmlFor='first_name'>First Name:</label>
-      <input type='text' id='first-name' />
-      <label htmlFor='last_name'>Last Name:</label>
-      <input type='text' id='last-name' />
-      <label htmlFor='email'>Email:</label>
-      <input type='email' id='email' />
-      <input type='password' id='password' />
-      <button>Submit</button>
+      <Label htmlFor='first_name'>First Name:</Label>
+      <Input type='text' id='first-name' />
+      <Label htmlFor='last_name'>Last Name:</Label>
+      <Input type='text' id='last-name' />
+      <Label htmlFor='email'>Email:</Label>
+      <Input type='email' id='email' />
+      <Label htmlFor='password'>Password:</Label>
+      <Input type='password' id='password' />
+      <button>Create</button>
     </form>
   )
 }
+
+const Label = styled.label`
+  display: block;
+`
+const Input = styled.input`
+  display: block;
+`
 
 export default SignUpForm
