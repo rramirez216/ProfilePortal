@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
-function SignUpForm() {
+function SignUpForm(props) {
   return (
     <form>
       <Label htmlFor='first_name'>First Name:</Label>
-      <Input type='text' id='first-name' />
+      <Input type='text' id='first-name' value={props.firstName} />
       <Label htmlFor='last_name'>Last Name:</Label>
       <Input type='text' id='last-name' />
       <Label htmlFor='email'>Email:</Label>
