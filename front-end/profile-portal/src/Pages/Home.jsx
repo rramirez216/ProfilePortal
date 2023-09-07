@@ -27,7 +27,7 @@ function Home() {
     }
   }
 
-  // useEffect(() =>,[])
+  useEffect(() => {}, [])
 
   return (
     <div>
