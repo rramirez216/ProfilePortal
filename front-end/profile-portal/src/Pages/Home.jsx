@@ -9,6 +9,7 @@ function Home() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [formData, setFormData] = useState(null)
+  const [userList, setUserList] = useState(null)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -27,7 +28,20 @@ function Home() {
     }
   }
 
-  useEffect(() => {}, [])
+  useEffect(() => {
+    const fetchList = async () => {
+      try {
+        const result = await axios.get('http://localhost:3000/profiles')
+
+        setUserList(result.data)
+
+        console.log(result.data)
+      } catch (error) {
+        console.log(error.message)
+      }
+    }
+    fetchList()
+  }, [])
 
   return (
     <div>
@@ -44,8 +58,7 @@ function Home() {
         formData={formData}
         handleSubmit={handleSubmit}
       />
-      <p>{JSON.stringify(formData)}</p>
-      <List />
+      <List userList={userList} />
     </div>
   )
 }
