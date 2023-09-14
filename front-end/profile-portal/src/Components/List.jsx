@@ -2,7 +2,11 @@ function List({ userList }) {
   return (
     <div>
       {userList ? (
-        <div>{userList[0].first_name}</div>
+        userList.map((user) => (
+          <p key={user.id}>
+            {user['first_name']} {user['last_name']}
+          </p>
+        ))
       ) : (
         <div>names go here</div>
       )}
